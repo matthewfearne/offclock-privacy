@@ -15,8 +15,13 @@ app is, is worse than one that admits a network call.
 
 Current claims that depend on the code:
 
-- **Permissions are exactly two:** `POST_NOTIFICATIONS` and
+- **Two permissions are requested from the user:** `POST_NOTIFICATIONS` and
   `RECEIVE_BOOT_COMPLETED`. Adding a third means editing this page.
+- **Four more are merged in by Play Billing** and are disclosed: `INTERNET`,
+  `ACCESS_NETWORK_STATE`, `com.android.vending.BILLING`, and the generated
+  `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`. Check the built APK, not the
+  manifest — `aapt2 dump badging <apk>` is the source of truth, because library
+  manifests merge in permissions the app's own manifest never mentions.
 - **No Health Connect, no body sensors, no location, no camera.**
 - **No analytics, no ads, no third-party trackers.**
 - **The only network activity is Google Play Billing**, for the one-time unlock.

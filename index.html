@@ -87,7 +87,20 @@ sleep information is involved in a purchase in any way.</p>
   <li><strong>Notifications</strong> — so the app can remind you when to wind down, when to get daylight, when to put sunglasses on, and when to stop drinking coffee. You can decline this and the app still works; you would just need to open it to see your plan. You can turn reminders off at any time in Settings, individually or all at once.</li>
   <li><strong>Run at startup</strong> — reminders are scheduled as local alarms, and Android clears those when the phone restarts. This permission lets the app put them back after a reboot so you do not silently lose your reminders. It is used for nothing else.</li>
 </ul>
-<p>That is the complete list. Offclock requests no other permissions.</p>
+<p>Those are the only two permissions the app asks <em>you</em> for.</p>
+
+<p>The installed app also declares four permissions it never prompts about, all of which come
+from the Google Play Billing component and exist so the one-time unlock can work:</p>
+<ul>
+  <li><strong>Internet</strong> and <strong>network state</strong> — required by Play Billing.
+  Offclock itself makes no network requests; it has no servers to call. See the section above.</li>
+  <li><strong>Billing</strong> — lets the app ask Google Play about the unlock.</li>
+  <li>A <strong>private receiver permission</strong> that Android generates for the app's own
+  internal use. It grants access to nothing outside the app.</li>
+</ul>
+<p>We list these because they show up if you inspect the app, and finding an undeclared internet
+permission in something that calls itself offline would rightly make you suspicious. Offclock
+requests nothing beyond this.</p>
 
 <h2>Health information</h2>
 <p>The times you enter are about sleep, so we treat them as sensitive even though they never leave
